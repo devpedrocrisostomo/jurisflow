@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { FileText, BarChart2, UserCheck, Settings, Building2, Users, ShieldCheck, Bell, Link2, Palette, Plus, Trash2, Save, Mail, Briefcase } from 'lucide-react';
+import { FileText, BarChart2, UserCheck, Settings, Building2, Users, Bell, Palette, Plus, Trash2, Save, Mail } from 'lucide-react';
 import axios from '../services/api';
 
 const API = 'http://localhost:4000';

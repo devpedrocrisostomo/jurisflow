@@ -10,7 +10,9 @@ import Financeiro from './pages/Financeiro';
 import CRM from './pages/CRM';
 import { Documentos, Relatorios, Equipe, Configuracoes } from './pages/Outros';
 
-const ProtectedRoute = ({ children }: { children: JSX.Element }) => {
+import React from 'react';
+
+const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   const token = localStorage.getItem('token');
   if (!token) return <Navigate to="/login" />;
   return children;

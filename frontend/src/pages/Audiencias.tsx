@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Calendar, Plus, Search, Edit2, Trash2 } from 'lucide-react';
+import { Calendar, Plus, Edit2, Trash2 } from 'lucide-react';
 import axios from '../services/api';
 
 const API = 'http://localhost:4000';
