@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import { Scale } from 'lucide-react';
-import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import axios from '../services/api';
 
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -18,7 +20,7 @@ export default function Login() {
       
       localStorage.setItem('token', response.data.token);
       localStorage.setItem('user', JSON.stringify(response.data.user));
-      window.location.href = '/dashboard';
+      navigate('/dashboard');
     } catch (err: any) {
       console.error(err);
       if (err.response) {

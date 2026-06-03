@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { FileText, BarChart2, UserCheck, Settings, Building2, Users, ShieldCheck, Bell, Link2, Palette, Plus, Trash2, Save, Mail, Briefcase } from 'lucide-react';
-import axios from 'axios';
+import axios from '../services/api';
 
 const API = 'http://localhost:4000';
 const getToken = () => localStorage.getItem('token');

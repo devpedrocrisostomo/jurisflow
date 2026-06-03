@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { TrendingUp, Plus, Search, ArrowRight } from 'lucide-react';
-import axios from 'axios';
+import axios from '../services/api';
 
 const API = 'http://localhost:4000';
 const getToken = () => localStorage.getItem('token');
