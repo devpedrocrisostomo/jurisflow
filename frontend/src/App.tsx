@@ -24,7 +24,7 @@ const AuthLayout = () => (
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/jurisflow">
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route element={<AuthLayout />}>
