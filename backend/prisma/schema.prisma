@@ -1,0 +1,142 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+}
+
+enum Role {
+  ADMIN
+  SOCIO
+  ADVOGADO
+  ESTAGIARIO
+  SECRETARIA
+  CLIENTE
+}
+
+model User {
+  id        String   @id @default(uuid())
+  name      String
+  email     String   @unique
+  password  String
+  role      Role     @default(ADVOGADO)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  cases     Case[]   @relation("AdvogadoCases")
+  tasks     Task[]   @relation("ResponsavelTasks")
+  hearings  Hearing[] @relation("ResponsavelHearings")
+}
+
+model Client {
+  id        String   @id @default(uuid())
+  type      String   // "PF" ou "PJ"
+  name      String
+  document  String   // CPF ou CNPJ
+  email     String?
+  phone     String?
+  address   String?
+  notes     String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  cases     Case[]
+}
+
+model Case {
+  id             String   @id @default(uuid())
+  caseNumber     String   @unique
+  court          String
+  jurisdiction   String   // Vara
+  caseClass      String
+  legalArea      String
+  status         String
+  notes          String?
+  opposingParty  String?
+  
+  clientId       String
+  client         Client   @relation(fields: [clientId], references: [id])
+  
+  lawyerId       String?
+  lawyer         User?    @relation("AdvogadoCases", fields: [lawyerId], references: [id])
+  
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  
+  tasks          Task[]
+  hearings       Hearing[]
+  documents      Document[]
+}
+
+model Task {
+  id          String   @id @default(uuid())
+  title       String
+  description String?
+  dueDate     DateTime
+  priority    String   // ALTA, MEDIA, BAIXA
+  status      String   // PENDENTE, EM_ANDAMENTO, CONCLUIDO, ATRASADO
+  
+  caseId      String?
+  case        Case?    @relation(fields: [caseId], references: [id])
+  
+  assigneeId  String?
+  assignee    User?    @relation("ResponsavelTasks", fields: [assigneeId], references: [id])
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Hearing {
+  id          String   @id @default(uuid())
+  date        DateTime
+  type        String
+  court       String
+  notes       String?
+  
+  caseId      String
+  case        Case     @relation(fields: [caseId], references: [id])
+  
+  assigneeId  String?
+  assignee    User?    @relation("ResponsavelHearings", fields: [assigneeId], references: [id])
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Document {
+  id          String   @id @default(uuid())
+  title       String
+  type        String   // CONTRATO, PETICAO, PROCURACAO, SENTENCA, PARECER
+  url         String
+  
+  caseId      String?
+  case        Case?    @relation(fields: [caseId], references: [id])
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Finance {
+  id          String   @id @default(uuid())
+  type        String   // RECEITA, DESPESA
+  category    String   // HONORARIOS, CUSTAS, ETC.
+  amount      Float
+  dueDate     DateTime
+  status      String   // PAGO, PENDENTE
+  notes       String?
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Lead {
+  id          String   @id @default(uuid())
+  name        String
+  contact     String
+  status      String   // LEAD, CONTATO_REALIZADO, REUNIAO_MARCADA, PROPOSTA_ENVIADA, FECHADO, PERDIDO
+  notes       String?
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
