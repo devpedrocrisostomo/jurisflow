@@ -3,7 +3,7 @@
   "short_name": "JurisFlow",
   "description": "Gestao juridica para processos, clientes, prazos, audiencias, financeiro e CRM.",
   "id": "/jurisflow/",
-  "start_url": "/jurisflow/dashboard",
+  "start_url": "/jurisflow/",
   "scope": "/jurisflow/",
   "display": "standalone",
   "display_override": ["window-controls-overlay", "standalone", "browser"],
