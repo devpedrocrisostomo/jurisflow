@@ -1,13 +1,16 @@
 import { Outlet } from 'react-router-dom';
-import Sidebar from './Sidebar';
+import Sidebar, { MobileNavigation } from './Sidebar';
 
 export default function Layout() {
   return (
-    <div className="flex min-h-screen bg-gray-950">
+    <div className="min-h-screen bg-gray-950 text-gray-100">
       <Sidebar />
-      <main className="flex-1 ml-64 p-8 overflow-y-auto">
-        <Outlet />
+      <main className="min-h-screen px-4 pb-28 pt-5 lg:ml-64 lg:p-8">
+        <div className="mx-auto w-full max-w-7xl">
+          <Outlet />
+        </div>
       </main>
+      <MobileNavigation />
     </div>
   );
 }

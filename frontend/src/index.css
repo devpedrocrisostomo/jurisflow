@@ -42,3 +42,36 @@
     --color-border: #334155;
   }
 }
+
+@layer base {
+  html {
+    min-height: 100%;
+    background: #030712;
+  }
+
+  body,
+  #root {
+    min-height: 100vh;
+  }
+
+  body {
+    overscroll-behavior-y: none;
+  }
+}
+
+@layer utilities {
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+@media (max-width: 768px) {
+  div:has(> table) {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  table {
+    min-width: 720px;
+  }
+}
