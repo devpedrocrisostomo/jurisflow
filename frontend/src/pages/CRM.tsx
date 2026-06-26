@@ -29,7 +29,7 @@ export default function CRM() {
     try {
       const res = await axios.get(`${API}/leads`, { headers: { Authorization: `Bearer ${getToken()}` } });
       setLeads(res.data);
-    } catch { }
+    } catch (error) { console.error(error); }
   };
 
   useEffect(() => { fetchAll(); }, []);

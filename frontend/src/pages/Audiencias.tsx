@@ -24,7 +24,7 @@ export default function Audiencias() {
       ]);
       setHearings(hRes.data);
       setCases(cRes.data);
-    } catch { }
+    } catch (error) { console.error(error); }
   };
 
   useEffect(() => { fetchAll(); }, []);

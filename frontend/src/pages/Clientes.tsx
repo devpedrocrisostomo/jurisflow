@@ -21,7 +21,7 @@ export default function Clientes() {
         headers: { Authorization: `Bearer ${getToken()}` }
       });
       setClients(res.data);
-    } catch { setClients([]); }
+    } catch (error) { console.error(error); setClients([]); }
   };
 
   useEffect(() => { fetchClients(); }, []);

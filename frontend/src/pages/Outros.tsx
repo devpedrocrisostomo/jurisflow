@@ -106,7 +106,7 @@ export const Equipe = () => {
         headers: { Authorization: `Bearer ${getToken()}` }
       });
       setUsers(res.data);
-    } catch { }
+    } catch (error) { console.error(error); }
   };
 
   useEffect(() => {
@@ -183,7 +183,7 @@ export const Configuracoes = () => {
         headers: { Authorization: `Bearer ${getToken()}` }
       });
       setUsers(res.data);
-    } catch { }
+    } catch (error) { console.error(error); }
     setLoadingUsers(false);
   };
 

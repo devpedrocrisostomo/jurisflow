@@ -23,7 +23,7 @@ export default function Financeiro() {
     try {
       const res = await axios.get(`${API}/finance`, { headers: { Authorization: `Bearer ${getToken()}` } });
       setEntries(res.data);
-    } catch { }
+    } catch (error) { console.error(error); }
   };
 
   useEffect(() => { fetchAll(); }, []);

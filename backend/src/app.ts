@@ -1,5 +1,5 @@
 import 'dotenv/config';
-import express from 'express';
+import express, { type ErrorRequestHandler } from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 
@@ -34,4 +34,14 @@ app.get('/health', (req, res) => {
   res.status(200).json({ status: 'ok', version: '1.0.0' });
 });
 
+app.use((req, res) => {
+  res.status(404).json({ error: 'Rota nao encontrada' });
+});
+
+const errorHandler: ErrorRequestHandler = (error, req, res, _next) => {
+  console.error('Erro nao tratado na API:', error);
+  res.status(500).json({ error: 'Erro interno do servidor' });
+};
+
+app.use(errorHandler);
 export default app;

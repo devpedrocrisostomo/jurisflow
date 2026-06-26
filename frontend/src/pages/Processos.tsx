@@ -31,7 +31,7 @@ export default function Processos() {
       ]);
       setCases(casesRes.data);
       setClients(clientsRes.data);
-    } catch { }
+    } catch (error) { console.error(error); }
   };
 
   useEffect(() => { fetchAll(); }, []);
