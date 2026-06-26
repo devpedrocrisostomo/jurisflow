@@ -1,0 +1,65 @@
+{
+  "name": "JurisFlow - Sistema de Gestao Juridica",
+  "short_name": "JurisFlow",
+  "description": "Gestao juridica para processos, clientes, prazos, audiencias, financeiro e CRM.",
+  "id": "/jurisflow/",
+  "start_url": "/jurisflow/dashboard",
+  "scope": "/jurisflow/",
+  "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone", "browser"],
+  "orientation": "any",
+  "background_color": "#030712",
+  "theme_color": "#1d4ed8",
+  "categories": ["business", "productivity", "utilities"],
+  "lang": "pt-BR",
+  "dir": "ltr",
+  "icons": [
+    {
+      "src": "/jurisflow/pwa-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/jurisflow/pwa-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/jurisflow/pwa-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/jurisflow/pwa-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Dashboard",
+      "short_name": "Dashboard",
+      "description": "Abrir resumo do escritorio",
+      "url": "/jurisflow/dashboard",
+      "icons": [{ "src": "/jurisflow/pwa-192.png", "sizes": "192x192", "type": "image/png" }]
+    },
+    {
+      "name": "Clientes",
+      "short_name": "Clientes",
+      "description": "Abrir cadastro de clientes",
+      "url": "/jurisflow/clientes",
+      "icons": [{ "src": "/jurisflow/pwa-192.png", "sizes": "192x192", "type": "image/png" }]
+    },
+    {
+      "name": "Prazos",
+      "short_name": "Prazos",
+      "description": "Abrir prazos e tarefas",
+      "url": "/jurisflow/prazos",
+      "icons": [{ "src": "/jurisflow/pwa-192.png", "sizes": "192x192", "type": "image/png" }]
+    }
+  ]
+}
